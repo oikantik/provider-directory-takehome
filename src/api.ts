@@ -1,5 +1,17 @@
 // This file contains the two API functions which you'll use: fetchProviders, and fetchProviders
 
+interface ProvidersList {
+  id: string; 
+  name: string; 
+  title: string; 
+  avatarUrl: string; 
+  bio: string;
+  availabilty: string;
+  education?: string;
+  location?: string;
+  languages?: string[];
+}
+
 /**
  * We are mimicking a REST request here, so it takes a half sec to respond
  */
@@ -10,11 +22,11 @@ const REQUEST_RESPONSE_TIME = 500
  * @param providerId - The ID of the provider to "fetch"
  * @return {Promise<{id: string, name: string, title: string, avatarUrl: string, bio: string, }>}
  */
-export const fetchProvider = (providerId) => {
+export const fetchProvider = (providerId: string) => {
   return new Promise(
     (resolve, reject) => setTimeout(
       () => {
-        const [matchingProvider] = fullDataset.filter(({id}) => id === providerId)
+        const [matchingProvider] = fullDataset.filter(({ id }) => id === providerId)
         if (matchingProvider) {
           resolve(matchingProvider)
         } else {
@@ -28,9 +40,9 @@ export const fetchProvider = (providerId) => {
 
 /**
  * Fetch all the providers to be displayed, in a minimal representation
- * @return {Promise<Array<{id: string, name: string, title: string, avatarUrl: string, bio: string}>>>}
+ * @return {Promise<Array<{id: string, name: string, title: string, avatarUrl: string, bio: string, location: string, availabilty: string}>>>}
  */
-export const fetchProviders = () => {
+export const fetchProviders = () : Promise<ProvidersList[]> => {
   return new Promise(
     (resolve) => setTimeout(
       () => resolve(fullDataset.map(makePartialRepresentation)),
@@ -39,11 +51,11 @@ export const fetchProviders = () => {
   )
 };
 
-const makePartialRepresentation = ({id, name, title, avatarUrl, bio, availabilty}) => ({
-  id, name, title, avatarUrl, bio, availabilty
+const makePartialRepresentation = ({ id, name, title, avatarUrl, bio, availabilty, location } : ProvidersList) => ({
+  id, name, title, avatarUrl, bio, availabilty, location
 });
 
-const fullDataset = [
+const fullDataset: ProvidersList[] = [
   {
     id: "1",
     name: "Caroline Champagne",
