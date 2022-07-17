@@ -1,15 +1,21 @@
 // This file contains the two API functions which you'll use: fetchProviders, and fetchProviders
 
-interface ProvidersList {
-  id: string; 
-  name: string; 
-  title: string; 
-  avatarUrl: string; 
+export interface ProvidersList {
+  id: string;
+  name: string;
+  title: string;
+  avatarUrl: string;
   bio: string;
   availabilty: string;
+  occupation: string;
   education?: string;
   location?: string;
   languages?: string[];
+}
+
+export interface LocationsList {
+  name: string;
+  abbr: string;
 }
 
 /**
@@ -22,7 +28,7 @@ const REQUEST_RESPONSE_TIME = 500
  * @param providerId - The ID of the provider to "fetch"
  * @return {Promise<{id: string, name: string, title: string, avatarUrl: string, bio: string, }>}
  */
-export const fetchProvider = (providerId: string) => {
+export const fetchProvider = (providerId: string): Promise<ProvidersList> => {
   return new Promise(
     (resolve, reject) => setTimeout(
       () => {
@@ -40,9 +46,9 @@ export const fetchProvider = (providerId: string) => {
 
 /**
  * Fetch all the providers to be displayed, in a minimal representation
- * @return {Promise<Array<{id: string, name: string, title: string, avatarUrl: string, bio: string, location: string, availabilty: string}>>>}
+ * @return {Promise<Array<{id: string, name: string, title: string, avatarUrl: string, bio: string, location: string, availabilty: string, occupation: string}>>>}
  */
-export const fetchProviders = () : Promise<ProvidersList[]> => {
+export const fetchProviders = (): Promise<ProvidersList[]> => {
   return new Promise(
     (resolve) => setTimeout(
       () => resolve(fullDataset.map(makePartialRepresentation)),
@@ -51,8 +57,8 @@ export const fetchProviders = () : Promise<ProvidersList[]> => {
   )
 };
 
-const makePartialRepresentation = ({ id, name, title, avatarUrl, bio, availabilty, location } : ProvidersList) => ({
-  id, name, title, avatarUrl, bio, availabilty, location
+const makePartialRepresentation = ({ id, name, title, avatarUrl, bio, availabilty, location, occupation }: ProvidersList) => ({
+  id, name, title, avatarUrl, bio, availabilty, location, occupation
 });
 
 const fullDataset: ProvidersList[] = [
@@ -60,11 +66,12 @@ const fullDataset: ProvidersList[] = [
     id: "1",
     name: "Caroline Champagne",
     title: "MSW",
-    avatarUrl: "",
+    avatarUrl: "1.png",
     availabilty: "tomorrow",
     location: "Quebec City, Quebec",
     education: "Concordia University\n",
     languages: ["French"],
+    occupation: "Registered Social Worker",
     bio: "Caroline Champagne is a Registered Social Worker and a member of the OTSTCFQ. While in university, she had " +
       "the chance to work at the CISSS-CA for several years, taking on different mandates and working with various " +
       "clienteles. Her experiences have allowed her to develop expertise in mental health issues that range from mood" +
@@ -78,11 +85,12 @@ const fullDataset: ProvidersList[] = [
     id: "2",
     name: "Tamara Childs",
     title: "MA, RCC",
-    avatarUrl: "",
+    avatarUrl: "2.png",
     availabilty: "next-week",
     location: "Toronto, Ontario",
     education: "University of Toronto",
     languages: ["English"],
+    occupation: "Registered Clinical Counsellor",
     bio: "Tamara is a Registered Clinical Counsellor, insured to provide online counselling for anyone across Canada."
       + " She works with clients of all ages and has extensive experience with those between the ages of 18 to 35. " +
       "With over 15 years of experience in counselling and social work, Tamara is equipped to help clients living " +
@@ -98,11 +106,12 @@ const fullDataset: ProvidersList[] = [
     id: "3",
     name: "Francois-Pierre Decoste",
     title: "MSW",
-    avatarUrl: "",
+    avatarUrl: "3.png",
     availabilty: "tomorrow",
     location: "Montreal, Quebec",
     education: "McGill",
     languages: ["English", "French"],
+    occupation: "Registered Social Worker",
     bio: "Dynamic and easy to approach, François-Pierre Decoste is a social worker who will help you take control of " +
       "your life. He specializes in issues that affect mood (anxiety, depression, grief, burnout, posttrauma) and " +
       "the quality of your relationships (communication, couple and family issues). His approach promotes better " +
@@ -112,14 +121,44 @@ const fullDataset: ProvidersList[] = [
     id: "4",
     name: "Marco DiCroce",
     title: "MSW",
-    avatarUrl: "",
+    avatarUrl: "4.png",
     availabilty: "tomorrow",
     location: "Toronto, Ontario",
     education: "University of Toronto",
     languages: ["English"],
+    occupation: "Registered Social Worker",
     bio: "Marco is a Registered Social Worker. He has worked extensively in community mental health and has " +
       "counselled individuals experiencing depression, anxiety, bipolar disorder, schizophrenia, and borderline " +
       "personality disorder. He views therapy as a partnership and likes to work collaboratively with clients to find" +
       "what works for them. He often utilizes CBT, brief solution-focused, and narrative approaches to therapy."
   },
 ];
+
+const locations: { [key: string]: string } = {
+  "AB": "Alberta",
+  "BC": "British Columbia",
+  "MB": "Manitoba",
+  "NB": "New Brunswick",
+  "NL": "Newfoundland and Labrador",
+  "NS": "Nova Scotia",
+  "NT": "Northwest Territories",
+  "NU": "Nunavut",
+  "ON": "Ontario",
+  "PE": "Prince Edward Island",
+  "QC": "Quebec",
+  "SK": "Saskatchewan",
+  "YT": "Yukon"
+}
+
+/**
+ * Fetch all the locations to be displayed
+ * @return {Promise<Array<{name: string, abbr: string}>>>}
+ */
+export const fetchLocations = (): Promise<LocationsList[]> => {
+  return new Promise(
+    (resolve) => setTimeout(
+      () => resolve(Object.keys(locations).map(loc => ({ name: locations[loc], abbr: loc }))),
+      REQUEST_RESPONSE_TIME
+    )
+  )
+};

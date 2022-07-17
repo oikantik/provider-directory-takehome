@@ -5,3 +5,4 @@ export { default as BottomChevronIcon } from './BottomChevron';
 export { default as MapIcon } from './Map';
 export { default as GlobeIcon } from './Globe';
 export { default as EducationIcon } from './Education';
+export { default as CloseIcon } from './Close'
