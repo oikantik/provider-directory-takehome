@@ -55,7 +55,7 @@ jobs:
       run: npm ci
       
     - name: Run tests and generate coverage
-      run: npm test -- --coverage
+      run: npm test -- --coverage --passWithNoTests
       
     - name: Upload report to coderev
       uses: codecov/codecov-action@v3
@@ -67,6 +67,7 @@ jobs:
 
   build_and_push:
       runs-on: ubuntu-latest
+      needs: build_for_code_coverage
       steps:
         - name: Checkout the repo 
           uses: actions/checkout@v2
