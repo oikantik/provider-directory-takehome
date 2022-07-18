@@ -1,39 +1,26 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 
-import { ProvidersList, fetchProvider } from '../api';
+import { ProvidersList } from '../api';
 
 interface ProviderContextProps {
-    provider: ProvidersList | undefined;
+    data: ProvidersList | undefined;
+    error: string;
     loading: boolean;
 }
 
-interface ProviderProps {
-    id: string;
+interface ProviderProps extends ProviderContextProps {
     children: React.ReactNode;
 }
 
 const ProviderContext = createContext<ProviderContextProps>({
-    provider: undefined,
+    data: undefined,
     loading: true,
+    error: '',
 });
 
-const ProviderListProvider: React.FC<ProviderProps> = ({ id, children }) => {
-    const [provider, setProvider] = useState<ProvidersList>();
-    const [loading, setLoading] = useState(true);
-
-    const fetchproviderList = useCallback(async () => {
-        const data = await fetchProvider(id);
-        console.log(data);
-        setProvider(data);
-        setLoading(false);
-    }, [id]);
-
-    useEffect(() => {
-        fetchproviderList();
-    }, [fetchproviderList]);
-
+const ProviderListProvider: React.FC<ProviderProps> = ({ data, error, loading, children }) => {
     return (
-        <ProviderContext.Provider value={{ provider, loading }}>
+        <ProviderContext.Provider value={{ data, error, loading }}>
             {children}
         </ProviderContext.Provider>
     );

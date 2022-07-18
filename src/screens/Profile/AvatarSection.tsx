@@ -8,8 +8,8 @@ function AvatarSection() {
         <div className="mr-[12px]">
             {provider && (
                 <img
-                    src={`../images/${provider.provider?.avatarUrl}`}
-                    alt={provider.provider?.name}
+                    src={`../images/${provider.data?.avatarUrl}`}
+                    alt={provider.data?.name}
                     className="border border-neutral3 w-[289px] mr-[20px]"
                 />
             )}

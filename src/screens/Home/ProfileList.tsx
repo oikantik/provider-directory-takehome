@@ -7,12 +7,12 @@ import { useProviders } from '../../contexts/providers';
 import Pulse from './Pulse';
 
 function ProfileList() {
-    const { providers, loading } = useProviders();
+    const { data, loading } = useProviders();
     const { state } = useMenu();
     let content;
-    if (!loading && providers.length > 0 && state.locations) {
+    if (!loading && data && data?.length > 0 && state.locations) {
         const filteredProviders = () => {
-            return providers.filter((prov) => {
+            return data.filter((prov) => {
                 return state.locations.some((loc) => prov?.location?.includes(loc.name));
             });
         };

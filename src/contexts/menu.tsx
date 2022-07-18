@@ -1,25 +1,23 @@
-import React, {
-    createContext,
-    useCallback,
-    useContext,
-    useEffect,
-    useReducer,
-    useState,
-} from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 
-import { LocationsList, fetchLocations } from '../api';
+import { LocationsList } from '../api';
 
 interface MenuContextProps {
-    locations: LocationsList[];
+    data: LocationsList[] | undefined;
+    error: string;
+    loading: boolean;
     state: State;
     dispatch: React.Dispatch<Action>;
 }
 
 interface MenuProps {
+    data: LocationsList[] | undefined;
+    error: string;
+    loading: boolean;
     children: React.ReactNode;
 }
 
-type State = {
+export type State = {
     status: boolean;
     locations: LocationsList[];
 };
@@ -42,7 +40,9 @@ const DEFAULT_PROVINCE = {
 };
 
 const MenuContext = createContext<MenuContextProps>({
-    locations: [],
+    data: [],
+    error: '',
+    loading: true,
     state: { status: false, locations: [] },
     dispatch: () => {},
 });
@@ -81,23 +81,13 @@ function menuReducer(state: State, action: Action) {
     }
 }
 
-const MenuProvider: React.FC<MenuProps> = ({ children }) => {
-    const [locations, setLocations] = useState<LocationsList[]>([]);
-    const fetchLocationsList = useCallback(async () => {
-        const data = await fetchLocations();
-        setLocations(data);
-    }, []);
-
-    useEffect(() => {
-        fetchLocationsList();
-    }, [fetchLocationsList]);
-
+const MenuProvider: React.FC<MenuProps> = ({ data, error, loading, children }) => {
     const [state, dispatch] = useReducer(menuReducer, {
         status: false,
         locations: [DEFAULT_PROVINCE],
     });
     return (
-        <MenuContext.Provider value={{ locations, state, dispatch }}>
+        <MenuContext.Provider value={{ data, error, loading, state, dispatch }}>
             {children}
         </MenuContext.Provider>
     );

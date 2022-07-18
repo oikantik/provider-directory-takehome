@@ -5,7 +5,7 @@ import { CloseIcon } from '../../components/Icons';
 import { Actions, useMenu } from '../../contexts/menu';
 
 function NavMenu() {
-    const { locations, state, dispatch } = useMenu();
+    const { data, state, dispatch } = useMenu();
 
     let content;
 
@@ -20,13 +20,13 @@ function NavMenu() {
             : false;
     };
 
-    if (locations) {
+    if (data && data.length > 0) {
         content = (
             <ul
                 className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200 h-[150px] overflow-y-scroll"
                 aria-labelledby="dropdownBgHoverButton"
             >
-                {locations?.map((loc) => {
+                {data?.map((loc) => {
                     const isChecked = isMenuChecked(state.locations, loc.abbr);
                     return (
                         <li key={loc.abbr}>

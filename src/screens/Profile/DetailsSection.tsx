@@ -10,19 +10,14 @@ function DetailsSection() {
     const handleReadMore = () => {
         setReadMore(!readMore);
     };
-    const clampStyles = useSpring({
-        loop: false,
-        to: [{ marginTop: readMore ? '30px' : '-5px' }, { marginTop: readMore ? '0px' : '0px' }],
-        from: { marginTop: readMore ? '50px' : '-50px' },
-    });
 
     const styles = useSpring({
         transform: readMore ? 'rotate(0deg)' : 'rotate(180deg)',
     });
 
     let content;
-    if (provider && provider.provider) {
-        const { name, title, occupation, bio, location, languages, education } = provider.provider;
+    if (provider && provider.data) {
+        const { name, title, occupation, bio, location, languages, education } = provider.data;
         content = (
             <>
                 <div className="container mx-auto max-w-screen-sm bg-white px-[32px] py-[24px] flex-col border-b border-neutral3 overflow-hidden">
@@ -41,7 +36,6 @@ function DetailsSection() {
                             className={`text-body3 text-neutral7 mb-[16px] text-subTitle ${
                                 readMore ? '' : 'line-clamp-2'
                             }`}
-                            style={clampStyles}
                         >
                             {bio}
                         </animated.p>

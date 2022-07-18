@@ -7,22 +7,22 @@ import DetailsSection from './DetailsSection';
 import Pulse from './Pulse';
 
 function ProfileSection() {
-    const { provider, loading } = useProvider();
+    const { data, loading } = useProvider();
 
     let content;
 
-    if (!loading && provider) {
+    if (!loading && data) {
         content = (
             <div className="container mx-auto max-w-screen-sm pt-[19px]">
-                {provider && (
+                {data && (
                     <Breadcrumb
                         from="Mental Wellness"
                         link="/"
-                        to={`${provider?.name}, ${provider?.title}`}
+                        to={`${data?.name}, ${data?.title}`}
                     />
                 )}
 
-                <div className="flex">
+                <div className="flex flex-wrap sm:flex sm:flex-nowrap">
                     <AvatarSection />
                     <DetailsSection />
                 </div>
