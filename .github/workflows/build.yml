@@ -52,7 +52,7 @@ jobs:
           
     # Now install everything, push the code to our code coverage, and run a build      
     - name: Install Dependencies
-      run: npm ci
+      run: npm i
       
     - name: Run tests and generate coverage
       run: npm test -- --coverage --passWithNoTests
