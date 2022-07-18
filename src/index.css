@@ -3,28 +3,28 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/HelveticaNeue-Regular.otf');
-  font-weight: 400;
-  font-style: normal;
+    font-family: 'Helvetica Neue';
+    src: url('./assets/fonts/HelveticaNeue-Regular.otf');
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/HelveticaNeue-Medium.otf');
-  font-weight: 500;
-  font-style: normal;
+    font-family: 'Helvetica Neue';
+    src: url('./assets/fonts/HelveticaNeue-Medium.otf');
+    font-weight: 500;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/HelveticaNeue-Bold.otf');
-  font-weight: 700;
-  font-style: normal;
+    font-family: 'Helvetica Neue';
+    src: url('./assets/fonts/HelveticaNeue-Bold.otf');
+    font-weight: 700;
+    font-style: normal;
 }
 
 @layer base {
-  html {
-    font-family: 'Helvetica Neue', system-ui, sans-serif;
-  }
+    html {
+        font-family: 'Helvetica Neue', system-ui, sans-serif;
+    }
 }
