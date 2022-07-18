@@ -1,7 +1,7 @@
-import { useSpring, animated } from "react-spring";
-import { LocationsList } from "../../api";
-import { CloseIcon } from "../../components/Icons";
-import { Actions, useMenu } from "../../contexts/menu";
+import { useSpring, animated } from 'react-spring';
+import { LocationsList } from '../../api';
+import { CloseIcon } from '../../components/Icons';
+import { Actions, useMenu } from '../../contexts/menu';
 
 function NavMenu() {
   const { locations, state, dispatch } = useMenu();
@@ -9,16 +9,12 @@ function NavMenu() {
   let content;
 
   const styles = useSpring({
-    display: state.status ? "block" : "none",
+    display: state.status ? 'block' : 'none',
     opacity: state.status ? 1 : 0,
   });
 
   const isMenuChecked = (locations: LocationsList[], toFind: string) => {
-    return locations.find(
-      (loc) => loc.abbr.toLowerCase() === toFind.toLowerCase()
-    )
-      ? true
-      : false;
+    return locations.find((loc) => loc.abbr.toLowerCase() === toFind.toLowerCase()) ? true : false;
   };
 
   if (locations) {

@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { LeftChevronIcon } from "../Icons";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { LeftChevronIcon } from '../Icons';
 
 interface BreadcrumbProps {
   link: string;
@@ -12,10 +12,10 @@ function Breadcrumb({ link, from, to }: BreadcrumbProps) {
     <div className="text-input1 text-neutral8 mb-[22px] flex items-center">
       <Link to={link}>
         <span className="text-input1 text-neutral7 mr-[6px]">{from}</span>
-      </Link>{" "}
+      </Link>{' '}
       <span className="mr-[6px]">
         <LeftChevronIcon />
-      </span>{" "}
+      </span>{' '}
       <span>{to}</span>
     </div>
   );

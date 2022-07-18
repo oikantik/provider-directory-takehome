@@ -1,5 +1,5 @@
-import React from "react";
-import { useProvider } from "../../contexts/provider";
+import React from 'react';
+import { useProvider } from '../../contexts/provider';
 
 function AvatarSection() {
   const provider = useProvider();

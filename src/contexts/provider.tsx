@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { fetchProvider, ProvidersList } from "../api";
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { fetchProvider, ProvidersList } from '../api';
 
 interface ProviderContextProps {
   provider: ProvidersList | undefined;
@@ -38,9 +32,7 @@ const ProviderListProvider: React.FC<ProviderProps> = ({ id, children }) => {
   }, [fetchproviderList]);
 
   return (
-    <ProviderContext.Provider value={{ provider, loading }}>
-      {children}
-    </ProviderContext.Provider>
+    <ProviderContext.Provider value={{ provider, loading }}>{children}</ProviderContext.Provider>
   );
 };
 

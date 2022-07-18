@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Card from "../../components/Card";
-import Pulse from "./Pulse";
-import { useMenu } from "../../contexts/menu";
-import { useProviders } from "../../contexts/providers";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Card from '../../components/Card';
+import Pulse from './Pulse';
+import { useMenu } from '../../contexts/menu';
+import { useProviders } from '../../contexts/providers';
 
 function ProfileList() {
   const { providers, loading } = useProviders();
@@ -12,9 +12,7 @@ function ProfileList() {
   if (!loading && providers.length > 0 && state.locations) {
     const filteredProviders = () => {
       return providers.filter((prov) => {
-        return state.locations.some((loc) =>
-          prov?.location?.includes(loc.name)
-        );
+        return state.locations.some((loc) => prov?.location?.includes(loc.name));
       });
     };
 
@@ -23,9 +21,7 @@ function ProfileList() {
         {filteredProviders().length > 0 ? (
           <>
             <p className="text-input2 text-neutral9 mb-[22px]">
-              <span className="font-medium text-neutral8">
-                {filteredProviders().length}
-              </span>{" "}
+              <span className="font-medium text-neutral8">{filteredProviders().length}</span>{' '}
               providers in
               {state.locations.length > 1
                 ? ` ${state.locations.length} provinces`
@@ -48,9 +44,7 @@ function ProfileList() {
             })}
           </>
         ) : (
-          <p className="text-input2 text-neutral9 mb-[22px]">
-            No providers found
-          </p>
+          <p className="text-input2 text-neutral9 mb-[22px]">No providers found</p>
         )}
       </div>
     );

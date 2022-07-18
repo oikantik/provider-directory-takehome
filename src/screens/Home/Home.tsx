@@ -1,7 +1,7 @@
-import ProfileList from "./ProfileList";
-import Header from "./Header";
-import ProvidersListProvider from "../../contexts/providers";
-import MenuProvider from "../../contexts/menu";
+import ProfileList from './ProfileList';
+import Header from './Header';
+import ProvidersListProvider from '../../contexts/providers';
+import MenuProvider from '../../contexts/menu';
 
 function Home() {
   return (

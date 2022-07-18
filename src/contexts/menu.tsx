@@ -5,8 +5,8 @@ import React, {
   useEffect,
   useReducer,
   useState,
-} from "react";
-import { fetchLocations, LocationsList } from "../api";
+} from 'react';
+import { fetchLocations, LocationsList } from '../api';
 
 interface MenuContextProps {
   locations: LocationsList[];
@@ -29,15 +29,15 @@ type Action = {
 };
 
 export enum Actions {
-  TRUE = "TRUE",
-  FALSE = "FALSE",
-  UPDATE_LOCATIONS = "UPDATE_LOCATIONS",
-  REMOVE_LOCATIONS = "REMOVE_LOCATIONS",
+  TRUE = 'TRUE',
+  FALSE = 'FALSE',
+  UPDATE_LOCATIONS = 'UPDATE_LOCATIONS',
+  REMOVE_LOCATIONS = 'REMOVE_LOCATIONS',
 }
 
 const DEFAULT_PROVINCE = {
-  name: "Ontario",
-  abbr: "ON",
+  name: 'Ontario',
+  abbr: 'ON',
 };
 
 const MenuContext = createContext<MenuContextProps>({
@@ -64,9 +64,7 @@ function menuReducer(state: State, action: Action) {
     case Actions.REMOVE_LOCATIONS: {
       if (action?.payload) {
         const newLocations = [...state.locations];
-        const idx = newLocations.findIndex(
-          (loc) => action?.payload?.abbr === loc.abbr
-        );
+        const idx = newLocations.findIndex((loc) => action?.payload?.abbr === loc.abbr);
 
         if (idx > -1) {
           newLocations.splice(idx, 1);
@@ -98,9 +96,7 @@ const MenuProvider: React.FC<MenuProps> = ({ children }) => {
     locations: [DEFAULT_PROVINCE],
   });
   return (
-    <MenuContext.Provider value={{ locations, state, dispatch }}>
-      {children}
-    </MenuContext.Provider>
+    <MenuContext.Provider value={{ locations, state, dispatch }}>{children}</MenuContext.Provider>
   );
 };
 

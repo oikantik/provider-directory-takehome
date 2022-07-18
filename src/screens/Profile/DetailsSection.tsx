@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-import { useSpring, animated } from "react-spring";
-import {
-  EducationIcon,
-  GlobeIcon,
-  MapIcon,
-  TopChevronIcon,
-} from "../../components/Icons";
-import { useProvider } from "../../contexts/provider";
+import React, { useState } from 'react';
+import { useSpring, animated } from 'react-spring';
+import { EducationIcon, GlobeIcon, MapIcon, TopChevronIcon } from '../../components/Icons';
+import { useProvider } from '../../contexts/provider';
 
 function DetailsSection() {
   const provider = useProvider();
@@ -16,21 +11,17 @@ function DetailsSection() {
   };
   const clampStyles = useSpring({
     loop: false,
-    to: [
-      { marginTop: readMore ? "30px" : "-5px" },
-      { marginTop: readMore ? "0px" : "0px" },
-    ],
-    from: { marginTop: readMore ? "50px" : "-50px" },
+    to: [{ marginTop: readMore ? '30px' : '-5px' }, { marginTop: readMore ? '0px' : '0px' }],
+    from: { marginTop: readMore ? '50px' : '-50px' },
   });
 
   const styles = useSpring({
-    transform: readMore ? "rotate(0deg)" : "rotate(180deg)",
+    transform: readMore ? 'rotate(0deg)' : 'rotate(180deg)',
   });
 
   let content;
   if (provider && provider.provider) {
-    const { name, title, occupation, bio, location, languages, education } =
-      provider.provider;
+    const { name, title, occupation, bio, location, languages, education } = provider.provider;
     content = (
       <>
         <div className="container mx-auto max-w-screen-sm bg-white px-[32px] py-[24px] flex-col border-b border-neutral3 overflow-hidden">
@@ -40,14 +31,12 @@ function DetailsSection() {
                 <h2 className="text-sub1 text-neutral9 font-medium mb-[6px]">
                   {name}, {title}
                 </h2>
-                <p className="text-label3 text-neutral7 font-medium text-subTitle">
-                  {occupation}
-                </p>
+                <p className="text-label3 text-neutral7 font-medium text-subTitle">{occupation}</p>
               </div>
             </div>
             <animated.p
               className={`text-body3 text-neutral7 mb-[16px] text-subTitle ${
-                readMore ? "" : "line-clamp-2"
+                readMore ? '' : 'line-clamp-2'
               }`}
               style={clampStyles}
             >
@@ -59,12 +48,10 @@ function DetailsSection() {
               onClick={handleReadMore}
             >
               <span className="mr-[6px] transition-all duration-150">
-                Read {readMore ? "less" : "more"}
-              </span>{" "}
+                Read {readMore ? 'less' : 'more'}
+              </span>{' '}
               <span>
-                <TopChevronIcon
-                  styles={styles as unknown as React.CSSProperties}
-                />
+                <TopChevronIcon styles={styles as unknown as React.CSSProperties} />
               </span>
             </button>
           </div>
@@ -78,9 +65,7 @@ function DetailsSection() {
               </div>
               <div>
                 <h2 className="text-input1 text-neutral7 mb-[6px]">Location</h2>
-                <p className="text-label3 text-neutral8 font-medium text-subTitle">
-                  {location}
-                </p>
+                <p className="text-label3 text-neutral8 font-medium text-subTitle">{location}</p>
               </div>
             </div>
 
@@ -89,12 +74,8 @@ function DetailsSection() {
                 <EducationIcon />
               </div>
               <div>
-                <h2 className="text-input1 text-neutral7 mb-[6px]">
-                  Education
-                </h2>
-                <p className="text-label3 text-neutral8 font-medium text-subTitle">
-                  {education}
-                </p>
+                <h2 className="text-input1 text-neutral7 mb-[6px]">Education</h2>
+                <p className="text-label3 text-neutral8 font-medium text-subTitle">{education}</p>
               </div>
             </div>
 
@@ -105,7 +86,7 @@ function DetailsSection() {
               <div>
                 <h2 className="text-input1 text-neutral7 mb-[6px]">Language</h2>
                 <p className="text-label3 text-neutral8 font-medium text-subTitle">
-                  {languages?.join(", ")}
+                  {languages?.join(', ')}
                 </p>
               </div>
             </div>

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { animated } from "react-spring";
+import * as React from 'react';
+import { animated } from 'react-spring';
 
 interface TopChevronProps {
   className?: string;

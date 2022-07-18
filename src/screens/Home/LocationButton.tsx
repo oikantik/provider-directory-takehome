@@ -1,13 +1,13 @@
-import React from "react";
-import { useSpring } from "react-spring";
+import React from 'react';
+import { useSpring } from 'react-spring';
 
-import { LocationIcon, TopChevronIcon } from "../../components/Icons";
-import { Actions, useMenu } from "../../contexts/menu";
+import { LocationIcon, TopChevronIcon } from '../../components/Icons';
+import { Actions, useMenu } from '../../contexts/menu';
 
 function LocationButton() {
   const { state, dispatch } = useMenu();
   const styles = useSpring({
-    transform: state.status ? "rotate(0deg)" : "rotate(180deg)",
+    transform: state.status ? 'rotate(0deg)' : 'rotate(180deg)',
   });
 
   return (
@@ -18,7 +18,7 @@ function LocationButton() {
     >
       <span className="mr-[3px]">
         <LocationIcon />
-      </span>{" "}
+      </span>{' '}
       <span className="text-label3 text-neutral8 mr-[10px]">
         {state?.locations.length > 1
           ? `${state?.locations.length} Provinces Selected`

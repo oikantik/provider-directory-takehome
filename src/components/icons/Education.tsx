@@ -1,12 +1,7 @@
-import * as React from "react"
+import * as React from 'react';
 
 const EducationIcon = () => (
-  <svg
-    width={32}
-    height={32}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width={32} height={32} fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#a)">
       <path
         d="m15.67 17.2-8.711-3.45v9.764a10.392 10.392 0 0 1 2.076-.206c2.73 0 5.19 1.038 6.645 2.735 1.454-1.697 3.91-2.735 6.645-2.735.711 0 1.412.069 2.076.206v-9.522l-8.089 3.214h-.643v-.005Z"
@@ -21,10 +16,7 @@ const EducationIcon = () => (
         fill="#D8CBE5"
       />
       <path d="m15.996 15.42.221-.09h-.442l.221.09Z" fill="#D8CBE5" />
-      <path
-        d="m3.286 10.382 12.71 5.038 12.7-5.038-12.7-5.048-12.71 5.048Z"
-        fill="#D8CBE5"
-      />
+      <path d="m3.286 10.382 12.71 5.038 12.7-5.038-12.7-5.048-12.71 5.048Z" fill="#D8CBE5" />
     </g>
     <defs>
       <clipPath id="a">
@@ -32,6 +24,6 @@ const EducationIcon = () => (
       </clipPath>
     </defs>
   </svg>
-)
+);
 
-export default EducationIcon
+export default EducationIcon;

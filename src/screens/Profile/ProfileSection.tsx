@@ -1,9 +1,9 @@
-import React from "react";
-import Breadcrumb from "../../components/Breadcrumb";
-import { useProvider } from "../../contexts/provider";
-import AvatarSection from "./AvatarSection";
-import DetailsSection from "./DetailsSection";
-import Pulse from "./Pulse";
+import React from 'react';
+import Breadcrumb from '../../components/Breadcrumb';
+import { useProvider } from '../../contexts/provider';
+import AvatarSection from './AvatarSection';
+import DetailsSection from './DetailsSection';
+import Pulse from './Pulse';
 
 function ProfileSection() {
   const { provider, loading } = useProvider();
