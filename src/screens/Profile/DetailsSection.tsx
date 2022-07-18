@@ -14,8 +14,19 @@ function DetailsSection() {
   const handleReadMore = () => {
     setReadMore(!readMore);
   };
-  const noClamp = useSpring({ marginTop: readMore ? 0 : 50 });
-  const onClamp = useSpring({ marginTop: readMore ? 50 : 0 });
+  const clampStyles = useSpring({
+    loop: false,
+    to: [
+      { marginTop: readMore ? "30px" : "-5px" },
+      { marginTop: readMore ? "0px" : "0px" },
+    ],
+    from: { marginTop: readMore ? "50px" : "-50px" },
+  });
+
+  const styles = useSpring({
+    transform: readMore ? "rotate(0deg)" : "rotate(180deg)",
+  });
+
   let content;
   if (provider && provider.provider) {
     const { name, title, occupation, bio, location, languages, education } =
@@ -34,22 +45,14 @@ function DetailsSection() {
                 </p>
               </div>
             </div>
-
-            {readMore ? (
-              <animated.p
-                className={`text-body3 text-neutral7 mb-[16px] text-subTitle overflow-hidden`}
-                style={noClamp}
-              >
-                {bio}
-              </animated.p>
-            ) : (
-              <animated.p
-                className={`text-body3 text-neutral7 mb-[16px] text-subTitle line-clamp-2`}
-                style={onClamp}
-              >
-                {bio}
-              </animated.p>
-            )}
+            <animated.p
+              className={`text-body3 text-neutral7 mb-[16px] text-subTitle ${
+                readMore ? "" : "line-clamp-2"
+              }`}
+              style={clampStyles}
+            >
+              {bio}
+            </animated.p>
 
             <button
               className="text-link3 text-secondary5 font-medium flex items-center"
@@ -59,7 +62,9 @@ function DetailsSection() {
                 Read {readMore ? "less" : "more"}
               </span>{" "}
               <span>
-                <TopChevronIcon className={readMore ? "" : "rotate-180"} />
+                <TopChevronIcon
+                  styles={styles as unknown as React.CSSProperties}
+                />
               </span>
             </button>
           </div>

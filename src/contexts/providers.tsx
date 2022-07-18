@@ -9,23 +9,27 @@ import { fetchProviders, ProvidersList } from "../api";
 
 interface ProvidersContextProps {
   providers: ProvidersList[];
+  loading: boolean;
 }
 
 interface ProvidersProps {
   children: React.ReactNode;
 }
 
-export const ProvidersContext = createContext<ProvidersContextProps | null>(
-  null
-);
+export const ProvidersContext = createContext<ProvidersContextProps>({
+  providers: [],
+  loading: false,
+});
 
 const ProvidersListProvider: React.FC<ProvidersProps> = ({ children }) => {
   const [providers, setProviders] = useState<ProvidersList[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchProvidersList = useCallback(async () => {
     const data = await fetchProviders();
     console.log(data);
     setProviders(data);
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const ProvidersListProvider: React.FC<ProvidersProps> = ({ children }) => {
   }, [fetchProvidersList]);
 
   return (
-    <ProvidersContext.Provider value={{ providers }}>
+    <ProvidersContext.Provider value={{ providers, loading }}>
       {children}
     </ProvidersContext.Provider>
   );

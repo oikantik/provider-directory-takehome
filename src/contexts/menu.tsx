@@ -42,7 +42,7 @@ const DEFAULT_PROVINCE = {
 
 const MenuContext = createContext<MenuContextProps>({
   locations: [],
-  state: { status: false, locations: [DEFAULT_PROVINCE] },
+  state: { status: false, locations: [] },
   dispatch: () => {},
 });
 
@@ -64,10 +64,14 @@ function menuReducer(state: State, action: Action) {
     case Actions.REMOVE_LOCATIONS: {
       if (action?.payload) {
         const newLocations = [...state.locations];
-        const idx = newLocations.indexOf(action?.payload);
+        const idx = newLocations.findIndex(
+          (loc) => action?.payload?.abbr === loc.abbr
+        );
+
         if (idx > -1) {
           newLocations.splice(idx, 1);
         }
+
         return { ...state, locations: newLocations };
       }
       return state;
