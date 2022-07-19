@@ -12,7 +12,7 @@ function LocationButton() {
 
     return (
         <button
-            className="flex items-center justify-center rounded-full bg-white border w-min-[69px] h-[37px] px-[16px]"
+            className="flex items-center justify-center rounded-full bg-white border w-min-[69px] h-[37px] px-[16px] mb-[12px]"
             onClick={() => dispatch({ type: Actions.TRUE })}
             disabled={state.status}
         >
