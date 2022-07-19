@@ -22,7 +22,7 @@ function ProfileSection() {
                     />
                 )}
 
-                <div className="flex flex-wrap sm:flex sm:flex-nowrap">
+                <div className="flex flex-col sm:flex sm:flex-row">
                     <AvatarSection />
                     <DetailsSection />
                 </div>

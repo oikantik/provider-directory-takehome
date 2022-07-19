@@ -21,7 +21,7 @@ function ProfileList() {
             <div className="container mx-auto max-w-screen-sm pt-[19px]">
                 {filteredProviders().length > 0 ? (
                     <>
-                        <p className="text-input2 text-neutral9 mb-[22px]">
+                        <p className="ml-[32px] sm:ml-0 text-input2 text-neutral9 mb-[22px]">
                             <span className="font-medium text-neutral8">
                                 {filteredProviders().length}
                             </span>{' '}

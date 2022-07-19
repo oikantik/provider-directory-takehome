@@ -23,7 +23,7 @@ function NavMenu() {
     if (data && data.length > 0) {
         content = (
             <ul
-                className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200 h-[150px] overflow-y-scroll"
+                className="p-3 space-y-1 text-sm text-gray-700 h-[150px] overflow-y-scroll"
                 aria-labelledby="dropdownBgHoverButton"
             >
                 {data?.map((loc) => {
@@ -31,7 +31,7 @@ function NavMenu() {
                     return (
                         <li key={loc.abbr}>
                             <div
-                                className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+                                className="flex items-center p-2 rounded hover:bg-gray-100"
                                 aria-disabled={true}
                             >
                                 <input
@@ -52,11 +52,11 @@ function NavMenu() {
                                         }
                                     }}
                                     disabled={state.locations.length === 1 && isChecked}
-                                    className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
                                 />
                                 <label
                                     htmlFor="checkbox-item-4"
-                                    className="ml-2 w-full text-label3 text-neutral8 rounded dark:text-gray-300"
+                                    className="ml-2 w-full text-label3 text-neutral8 rounded"
                                 >
                                     {loc.name}, {loc.abbr}
                                 </label>
@@ -70,10 +70,7 @@ function NavMenu() {
         content = <></>;
     }
     return (
-        <animated.div
-            className={`absolute z-10 w-48 bg-white rounded shadow dark:bg-gray-700`}
-            style={styles}
-        >
+        <animated.div className={`absolute z-10 w-48 bg-white rounded shadow`} style={styles}>
             {content}
             <button
                 className="flex ml-2 w-full text-right pr-[20px] pt-[10px] pb-[10px] justify-end"

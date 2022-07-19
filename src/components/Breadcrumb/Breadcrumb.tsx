@@ -10,7 +10,7 @@ interface BreadcrumbProps {
 }
 function Breadcrumb({ link, from, to }: BreadcrumbProps) {
     return (
-        <div className="text-input1 text-neutral8 mb-[22px] flex items-center">
+        <div className="ml-[32px] sm:ml-0 text-input1 text-neutral8 mb-[22px] flex items-center">
             <Link to={link}>
                 <span className="text-input1 text-neutral7 mr-[6px]">{from}</span>
             </Link>{' '}
